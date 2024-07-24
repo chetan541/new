@@ -1,0 +1,1 @@
+{"name":"Local: hope","url":"/home/chetan/Desktop/cpp/hope.cpp","tests":[{"id":1717084992132,"input":"1\n3 1\n4 3 3 4 1\n5 5 4 5 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/chetan/Desktop/cpp/hope.cpp","group":"local","local":true}

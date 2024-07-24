@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;  
+// Shortcuts for "common" data types in contests
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
+typedef set<int> si;
+typedef map<ll, ll> msi;
+  
+// To simplify repetitions/loops, Note: define your
+// loop style and stick with it!
+#define REP(i, a, b) \
+for(int i = int(a); i <= int(b); i++) // a to b, and variable i is local!
+#define TRvi(c, it) \
+for(vi::iterator it = (c).begin(); it != (c).end(); it++)
+#define TRvii(c, it) \
+for(vii::iterator it = (c).begin(); it != (c).end(); it++)
+#define TRmsi(c, it) \
+for(msi::iterator it = (c).begin(); it != (c).end(); it++)
+  
+#define INF 2000000000 // 2 billion
+  
+// If you need to recall how to use memset:
+#define MEMSET_INF 127 // about 2B
+#define MEMSET_HALF_INF 63 // about 1B
+int main(){
+    int t;cin>>t;
+    while(t--){
+        msi m;
+        int n;cin>>n;
+        vi v;
+        REP(i,0,n-1){
+            int a;cin>>a;
+            m[a]++;
+        }
+        ll flag=0;
+        flag+=((m[1]+m[2])*(m[1]+m[2]-1))/2;
+        for(auto it:m){
+            if(it.first!=1 && it.first!=2 && it.second!=0){
+                flag+=((it.second)*(it.second-1))/2;
+            }
+        }
+        cout<<flag<<endl;
+    }
+}

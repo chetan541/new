@@ -1,0 +1,1 @@
+{"name":"Local: heater","url":"/home/chetan/Desktop/cpp/heater.cpp","tests":[{"id":1705426486438,"input":"2 1\n1 5\n2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/chetan/Desktop/cpp/heater.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: ice","url":"/home/chetan/Desktop/cpp/ice.py","tests":[{"id":1692995079972,"input":"5\n1\n3\n6\n179\n1000000000000000000","output":"2\n3\n4\n27\n2648956421"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/chetan/Desktop/cpp/ice.py","group":"local","local":true}
