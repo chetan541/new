@@ -1,75 +1,75 @@
 #include <bits/stdc++.h>
-using namespace std;  
-// Shortcuts for "common" data types in contests
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vll;
-typedef pair<int, int> pi;
-typedef vector<pi> vii;
-typedef set<int> si;
-typedef map<string, int> msi;
-#define all(x) (x).begin(), (x).end()
-#define pb push_back
-#define F first 
-#define S second
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-typedef tree<int, null_type, greater<int>, rb_tree_tag, tree_order_statistics_node_update>ordered_set;
-#define multi_ordered_set tree<ll, null_type,greater_equal<ll>, rb_tree_tag,tree_order_statistics_node_update>
-  
-  
-// To simplify repetitions/loops, Note: define your
-// loop style and stick with it!
-#define REP(i, a, b) \
-for(int i = int(a); i <= int(b); i++) // a to b, and variable i is local!
-#define TRvi(c, it) \
-for(vi::iterator it = (c).begin(); it != (c).end(); it++)
-#define TRvii(c, it) \
-for(vii::iterator it = (c).begin(); it != (c).end(); it++)
-#define TRmsi(c, it) \
-for(msi::iterator it = (c).begin(); it != (c).end(); it++)
-  
-#define INF 2000000000 // 2 billion
-  
-// If you need to recall how to use memset:
-#define MEMSET_INF 127 // about 2B
-#define MEMSET_HALF_INF 63 // about 1B
-// int is_prime[1000001];
-//vector<int> primes;
-//vi SieveOfEratosthenes(int n) {
-//    vi v;
-//    bool prime[n + 1];
- //   memset(prime, true, sizeof(prime));
+using namespace std;
 
- //   for (int p = 2; p * p <= n; p++) {
-  //      if (prime[p] == true) {
-  //          for (int i = p * p; i <= n; i += p)
-  //              prime[i] = false;
-   //     }
-   // }
-    //for (int p = 2; p <= n; p++) {
-     //   if (prime[p])
-     //       v.push_back(p);
-    //}
-   // return v;
-//}
-
+class DSU
+{
+private:
+    int n;
+    vector<int> parent, Size;
+ 
+public:
+    int cc;
+    int find(int v)
+    {
+        if (parent[v] == v) return v;
+        return parent[v] = find(parent[v]);
+    }
+ 
+    void Union(int a, int b)
+    {
+        int x = find(a), y = find(b);
+        if (x != y) {
+            cc--;
+            if (Size[x] < Size[y]) swap(x, y);
+            parent[y] = x;
+            Size[x] += Size[y];
+        }
+    }
+    bool same(int u, int v)  {return (find(u) == find(v));}
+    
+    DSU(const int N_) {
+        n = N_;
+        cc = N_;
+        parent = vector<int>(n + 1);        
+        Size = vector<int>(n + 1, 1);
+        iota(parent.begin(), parent.end(), 0);        
+    }
+};
+ 
 int main(){
- ios::sync_with_stdio(false), cin.tie(0);
-    int t;cin>>t;
+    int t ; 
+    cin>>t;
     while(t--){
-        int n;cin>>n;
-        vi v;
-        REP(i,0,n-1){
-            int a;cin>>a;
-            v.push_back(a);
+        int n ; cin>>n;
+        int arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
         }
-        map<pair<int,int>,int> m;
-        pair<int,int> arr[n];
-        for(int i=n-1;i>=1;i--){
-            map<int,int> 
+
+
+
+    vector<pair<int,int> > res;
+    map<pair<int,int> , bool> edges;
+    for(int i=n-1;i>=1;i--){
+        unordered_map<int,int> mp;
+        for(int j=0;j<n;j++){
+            if(mp[arr[j]%i]!=0){
+                if(edges[{j+1,mp[arr[j]%i]}]==false){
+                res.push_back({j+1,mp[arr[j]%i]});
+                edges[{j+1,mp[arr[j]%i]}]=true;
+                    break;
+                }
+            }
+            mp[arr[j]%i]=j+1;
         }
+    }
+
+    cout<<"YES"<<endl;
+
+    for(int i=n-2;i>=0;i--){
+        cout<<res[i].first<<" "<<res[i].second<<endl;
+    }
+
 
     }
 }
